@@ -2,7 +2,7 @@
   "name": "antigravity-usage-monitor",
   "displayName": "Antigravity Usage Monitor",
   "description": "Real-time AI model quota and usage monitoring for Google Antigravity IDE",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "antigravity-usage",
   "engines": {
     "vscode": "^1.85.0"
