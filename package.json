@@ -1,0 +1,90 @@
+{
+  "name": "antigravity-usage-monitor",
+  "displayName": "Antigravity Usage Monitor",
+  "description": "Real-time AI model quota and usage monitoring for Google Antigravity IDE",
+  "version": "0.1.0",
+  "publisher": "antigravity-usage",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "antigravity",
+    "usage",
+    "quota",
+    "ai",
+    "gemini",
+    "claude",
+    "monitor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antigravity-usage/antigravity-usage-monitor.git"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravity-usage.showUsagePanel",
+        "title": "Antigravity: Show Usage Dashboard"
+      },
+      {
+        "command": "antigravity-usage.refreshQuota",
+        "title": "Antigravity: Refresh Quota"
+      }
+    ],
+    "configuration": {
+      "title": "Antigravity Usage Monitor",
+      "properties": {
+        "antigravity-usage.pollingInterval": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "maximum": 300,
+          "description": "How often to poll for quota updates (in seconds)"
+        },
+        "antigravity-usage.warningThreshold": {
+          "type": "number",
+          "default": 70,
+          "minimum": 10,
+          "maximum": 95,
+          "description": "Usage percentage at which to show a warning indicator"
+        },
+        "antigravity-usage.criticalThreshold": {
+          "type": "number",
+          "default": 90,
+          "minimum": 50,
+          "maximum": 100,
+          "description": "Usage percentage at which to show a critical indicator"
+        },
+        "antigravity-usage.enableNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show desktop notifications when quota exceeds thresholds"
+        },
+        "antigravity-usage.enableMockData": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use mock data for development and testing"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
